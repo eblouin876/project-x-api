@@ -45,6 +45,9 @@ module.exports = function (app) {
       res.send("Logged out");
     });
 
+    app.get("/", function(req,res) {
+        res.send("Welcome to our api")
+    })
     // app.get("/api/users", function(req, res) {
     //   Users.find({}, (err, data) => {
     //     if (err) log(err);
