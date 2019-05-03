@@ -1,19 +1,11 @@
 const log = require("con-logger");
 const Users = require("../models/users");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const broadcast = require("../config/middleware/broadcast");
 
 module.exports = function (app) {
 
-  app.get("/api/test", function(req,res) {
-    app.io("connection", function(socket) {
-      console.log("Hello");
-      socket.emit("Hi there");
-    })
-    res.send("Got to test")
-  });
-
-
-  app.get("/api/getUpdate", isAuthenticated, function (req, res) { // NOTE: Does not require any req.body - reads all the paramas off the authenticated user
+  app.get("/api/getUpdate", isAuthenticated, broadcast, function (req, res) { // NOTE: Does not require any req.body - reads all the paramas off the authenticated user
     Users.findOne({id: req.user.id}, (err, data) => {
       if (err) console.log(err);
       console.log(data);
@@ -21,7 +13,7 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/api/addSensor", isAuthenticated, function(req, res) {
+  app.post("/api/addSensor", isAuthenticated, broadcast, function(req, res) {
     // NOTE: Needs to be passed sensorId in  req.body
     let SID = req.body.sensorId;
     let UID = req.user.id

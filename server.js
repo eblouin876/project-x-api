@@ -8,7 +8,7 @@ const passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
-// Heroki may require a tweak to the port to listen on:
+// Heroku may require a tweak to the port to listen on:
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
@@ -27,16 +27,11 @@ app.use(passport.session());
 // Connect to the mongoose server
 mongoose.connect("mongodb://localhost/passport_local_mongoose");
 
-// socket setup (Just in case we need  it for live updates, which I think we will)
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
-app.io = io;
-
 // TODO: Require our routes
 require("./controllers/auth-routes")(app);
 require("./controllers/pi-routes")(app);
 
-http.listen(PORT, function() {
+app.listen(PORT, function() {
   console.log(
     "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
     PORT,
