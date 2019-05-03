@@ -4,6 +4,12 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
 
+  app.get("/api/test", function(req,res) {
+    app.io("connection", function(socket) {
+      console.log("Hello");
+      socket.emit("Hi there");
+    })
+  });
 
 
   app.get("/api/getUpdate", isAuthenticated, function (req, res) { // NOTE: Does not require any req.body - reads all the paramas off the authenticated user
