@@ -9,6 +9,7 @@ module.exports = function (app) {
       console.log("Hello");
       socket.emit("Hi there");
     })
+    res.send("Got to test")
   });
 
 
