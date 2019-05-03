@@ -27,7 +27,7 @@ module.exports = function (app) {
                         (err, user) => {
                             if (err) log(err);
                             log(user);
-                            res.send("User: " + req.user.id);
+                            res.send({UID: req.user.id});
                         }
                     );
                 });
@@ -37,7 +37,7 @@ module.exports = function (app) {
 
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
         // NOTE: this takes an  object with  keys username, password
-        res.send(req.user);
+        res.send({UID: req.user.id});
     });
 
     app.post("/api/logout", function(req, res) {
@@ -48,29 +48,30 @@ module.exports = function (app) {
     app.get("/", function(req,res) {
         res.send("Welcome to our api")
     })
-    // app.get("/api/users", function(req, res) {
-    //   Users.find({}, (err, data) => {
-    //     if (err) log(err);
-    //     res.send(data);
-    //   });
-    // });
-    //
-    // app.get("/api/accounts", function(req, res) {
-    //   Auth.find({}, (err, data) => {
-    //     if (err) log(err);
-    //     res.send(data);
-    //   });
-    // });
 
-//     app.get("/api/reset", function (req, res) {
-//         Auth.remove({}, err => {
-//             if (err) log(err);
-//             Users.remove({}, err => {
-//                 if (err) log(err);
-//                 res.send("User and auth database reset");
-//             });
-//         });
-//     });
+    app.get("/api/users", function(req, res) {
+      Users.find({}, (err, data) => {
+        if (err) log(err);
+        res.send(data);
+      });
+    });
+
+    app.get("/api/accounts", function(req, res) {
+      Auth.find({}, (err, data) => {
+        if (err) log(err);
+        res.send(data);
+      });
+    });
+
+    app.get("/api/reset", function (req, res) {
+        Auth.remove({}, err => {
+            if (err) log(err);
+            Users.remove({}, err => {
+                if (err) log(err);
+                res.send("User and auth database reset");
+            });
+        });
+    });
 };
 
 // req.user.username returns the username, req.user.id returns the unique id
