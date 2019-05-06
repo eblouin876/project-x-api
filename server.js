@@ -26,7 +26,7 @@ app.use(passport.session());
 
 // Connect to the mongoose server
 // mongoose.connect("mongodb://localhost/passport_local_mongoose"); // local
-mongoose.connect("mongodb://cliApp:Projext-x-12345@ds151076.mlab.com:51076/heroku_cs8gk729"); // production
+mongoose.connect("mongodb://cliApp:Projext-x-12345@ds151076.mlab.com:51076/heroku_cs8gk729",{useNewUrlParser: true}); // production
 
 // TODO: Require our routes
 require("./controllers/auth-routes")(app);
