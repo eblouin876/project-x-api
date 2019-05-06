@@ -49,29 +49,29 @@ module.exports = function (app) {
         res.send("Welcome to our api")
     })
 
-    app.get("/api/users", function(req, res) {
-      Users.find({}, (err, data) => {
-        if (err) log(err);
-        res.send(data);
-      });
-    });
-
-    app.get("/api/accounts", function(req, res) {
-      Auth.find({}, (err, data) => {
-        if (err) log(err);
-        res.send(data);
-      });
-    });
-
-    app.get("/api/reset", function (req, res) {
-        Auth.remove({}, err => {
-            if (err) log(err);
-            Users.remove({}, err => {
-                if (err) log(err);
-                res.send("User and auth database reset");
-            });
-        });
-    });
+    // app.get("/api/users", function(req, res) {
+    //   Users.find({}, (err, data) => {
+    //     if (err) log(err);
+    //     res.send(data);
+    //   });
+    // });
+    //
+    // app.get("/api/accounts", function(req, res) {
+    //   Auth.find({}, (err, data) => {
+    //     if (err) log(err);
+    //     res.send(data);
+    //   });
+    // });
+    //
+    // app.get("/api/reset", function (req, res) {
+    //     Auth.remove({}, err => {
+    //         if (err) log(err);
+    //         Users.remove({}, err => {
+    //             if (err) log(err);
+    //             res.send("User and auth database reset");
+    //         });
+    //     });
+    // });
 };
 
 // req.user.username returns the username, req.user.id returns the unique id
