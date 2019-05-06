@@ -22,7 +22,7 @@ module.exports = function (app) {
                         {
                             id: req.user.id,
                             user: req.user.username,
-                            deviceId: deviceId
+                            piDevice: {deviceId: deviceId}
                         },
                         (err, user) => {
                             if (err) log(err);

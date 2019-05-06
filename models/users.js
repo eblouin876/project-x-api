@@ -14,7 +14,7 @@ const userSchema = new Schema({
             status: Number
         }],
         status: Number,
-        serialNumber: String,
+        deviceId: Number,
         discovery: {type: Boolean, default: false},
     }
 });
