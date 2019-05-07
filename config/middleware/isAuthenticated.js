@@ -5,7 +5,7 @@ module.exports = function(req, res, next) {
 
   if (req.user) {
     return next();
-  } else if (req.headers.user) {
+  } else if (req.headers.user) { // This looks for a user key in the header object, which is assigned when the request is sent from our devices
     req.user = {id: req.headers.user};
     return next();
   }
