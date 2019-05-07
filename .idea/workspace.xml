@@ -67,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/middleware/isAuthenticated.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="207">
+              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -187,12 +187,12 @@
       <option name="presentableId" value="Default" />
       <updated>1556815331461</updated>
       <workItem from="1556815332748" duration="9041000" />
-      <workItem from="1557165785215" duration="13987000" />
+      <workItem from="1557165785215" duration="14100000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23028000" />
+    <option name="totallyTimeSpent" value="23141000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -313,8 +313,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/middleware/isAuthenticated.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="207">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
         </state>
       </provider>
     </entry>
