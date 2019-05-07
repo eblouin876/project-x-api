@@ -14,8 +14,7 @@ const userSchema = new Schema({
             status: Number
         }],
         status: Number,
-        deviceId: Number,
-        discovery: {type: Boolean, default: false},
+        deviceId: Number
     }
 });
 
