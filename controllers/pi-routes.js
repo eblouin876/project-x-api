@@ -5,6 +5,7 @@ const broadcast = require("../config/middleware/broadcast");
 
 module.exports = function (app) {
 
+  // Route to get all of the arduino's data associated with the  account
   app.get("/api/arduinos", isAuthenticated, function (req, res) { // NOTE: Does not require any req.body - reads all the paramas off the authenticated user
     Users.findOne({id: req.user.id}, (err, data) => {
       if (err) console.log(err);
@@ -13,7 +14,12 @@ module.exports = function (app) {
     });
   });
 
-  // TODO: Add a new device
+  // Route for the pi to hit in order to pull updates
+  app.get("/api/getUpdate/:id", isAuthenticated, function (req,res) {
+
+  });
+
+  // Route to add a new arduino to the account
   app.post("/api/addArduino", isAuthenticated, broadcast, function(req, res) {
     // NOTE: Needs to be passed sensorId in  req.body
     let SID = req.body.sensorId;
@@ -43,9 +49,11 @@ module.exports = function (app) {
     });
   });
 
+  // Route to update an existing arduino (for schedule)
   app.post("/api/updateArduino", isAuthenticated, broadcast, function(req,res) {});
   //   TODO: Add an update schedule route implementing findOneAndUpdate https://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate
 
+  //Route to remove an arduino from the account
   app.delete("/api/deleteArduino", isAuthenticated, broadcast, function(req,res) {});
 
 };
