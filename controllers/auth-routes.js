@@ -26,12 +26,11 @@ module.exports = function (app) {
                             user: req.user.username,
                             piDevice: {deviceId: deviceId}
                         },
-                        (err, user) => {
+                        (err) => {
                             if (err){
                                 log(err);
                                 return res.send(err)
                             } else {
-                            log(user);
                             res.send({UID: req.user.id, deviceId: deviceId});
                             }
                         }
