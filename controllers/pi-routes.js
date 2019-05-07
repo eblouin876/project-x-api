@@ -9,8 +9,7 @@ module.exports = function (app) {
   app.get("/api/arduinos", isAuthenticated, function (req, res) { // NOTE: Does not require any req.body - reads all the paramas off the authenticated user
     Users.findOne({id: req.user.id}, (err, data) => {
       if (err) console.log(err);
-      console.log(data.sensors);
-      res.send(data.sensors);
+      res.send(data);
     });
   });
 

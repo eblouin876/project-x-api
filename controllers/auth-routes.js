@@ -7,6 +7,7 @@ module.exports = function (app) {
     app.post("/api/register", function (req, res) {
         // NOTE: This takes an object with  keys username, password, deviceId. It should require all 3
         const deviceId = req.body.deviceId;
+        // Registers a new user. Will not work if the username has already been used
         Auth.register(
             new Auth({username: req.body.username}),
             req.body.password,
@@ -15,9 +16,10 @@ module.exports = function (app) {
                     log(err);
                     return res.send("Unable to register user account");
                 }
-
+                // Authenticates the user upon successful creation
                 passport.authenticate("local")(req, res, function () {
                     log(req.user.id);
+                    // Adds to the users collection creating a new instance that hosts all the data
                     Users.create(
                         {
                             id: req.user.id,
@@ -25,9 +27,13 @@ module.exports = function (app) {
                             piDevice: {deviceId: deviceId}
                         },
                         (err, user) => {
-                            if (err) log(err);
+                            if (err){
+                                log(err);
+                                return res.send(err)
+                            } else {
                             log(user);
-                            res.send({UID: req.user.id});
+                            res.send({UID: req.user.id, deviceId: deviceId});
+                            }
                         }
                     );
                 });

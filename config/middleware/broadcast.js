@@ -12,7 +12,7 @@ module.exports = function(req, res, next) {
 
     pusher.trigger('project-x', 'update', {
         // TODO: REMOVE THE QUOTES
-        id: "req.user.id"
+        id: req.user.id
     });
-        return next();
+    return next();
 };
