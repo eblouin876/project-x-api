@@ -29,8 +29,8 @@ app.use(passport.session());
 mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser: true}); // production
 
 // TODO: Require our routes
-require("./controllers/auth-routes")(app);
 require("./controllers/pi-routes")(app);
+require("./controllers/auth-routes")(app);
 
 app.listen(PORT, function() {
   console.log(
