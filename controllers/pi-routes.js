@@ -53,7 +53,7 @@ module.exports = function (app) {
         Users.findOneAndUpdate({id: req.user.id}, {piDevice: req.body})
             .catch(err => {
                 if (err) console.log(err)
-            })
+            }) .then(data => res.send(data));
     });
     //   TODO: Add an update schedule route implementing findOneAndUpdate https://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate
 
