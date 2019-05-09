@@ -12,6 +12,7 @@ const userSchema = new Schema({
             plantName: String,
             serialNumber: String,
             status: Number,
+            active: Boolean,
             data: {pump: Number, temperature: Number, humidity: Number}
         }],
         status: Number,
