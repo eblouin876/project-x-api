@@ -8,11 +8,11 @@ const userSchema = new Schema({
         arduinos: [{
             deviceId: String,
             comName: String,
-            schedule: [{duration: Number, days: [{day: String, time: Number}]}],
+            schedule: [{amount: String, day: String, time: String}],
             plantName: String,
             serialNumber: String,
             status: Number,
-            data:{pump: Number, temperature: Number, humidity: Number}
+            data: {pump: Number, temperature: Number, humidity: Number}
         }],
         status: Number,
         deviceId: Number
