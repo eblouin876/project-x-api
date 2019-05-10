@@ -23,7 +23,7 @@ module.exports = function (app) {
 
     // Route to update single arduino. Needs schedule, plantName, and deviceId in the req.body
     app.post("/api/updateArduino", isAuthenticated, broadcast, function (req, res) {
-        Users.findOneAndUpdate({id: req.user.id, "piDevice.deviceId": req.body.deviceId},
+        Users.update({id: req.user.id, "piDevice.deviceId": req.body.deviceId},
             {"piDevice.$.schedule": req.body.schedule,
             "piDevice.$.plantName": req.body.plantName
             } )
