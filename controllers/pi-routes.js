@@ -24,13 +24,17 @@ module.exports = function (app) {
     // Route to update single arduino. Needs schedule, plantName, and deviceId in the req.body
     app.post("/api/updateArduino", isAuthenticated, broadcast, function (req, res) {
         Users.update({id: req.user.id, "piDevice.$.deviceId": req.body.deviceId},
-            {"piDevice.$.schedule": req.body.schedule,
+            {$set: {"piDevice.$.schedule": req.body.schedule,
             "piDevice.$.plantName": req.body.plantName
-            } )
+            }})
             .catch(err => {
                 if(err) console.log(err)
             }).then (data => res.send(data))
-    })
+    });
 
-
+    db.collection.updateMany(
+        { <query conditions> },
+    { <update operator>: { "<array>.$[<identifier>]" : value } },
+    { arrayFilters: [ { <identifier>: <condition> } } ] }
+)
 };
