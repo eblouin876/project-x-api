@@ -32,9 +32,9 @@ module.exports = function (app) {
             }).then (data => res.send(data))
     });
 
-    db.collection.updateMany(
-        { <query conditions> },
-    { <update operator>: { "<array>.$[<identifier>]" : value } },
-    { arrayFilters: [ { <identifier>: <condition> } } ] }
-)
+//     db.collection.updateMany(
+//         { <query conditions> },
+//     { <update operator>: { "<array>.$[<identifier>]" : value } },
+//     { arrayFilters: [ { <identifier>: <condition> } } ] }
+// )
 };
