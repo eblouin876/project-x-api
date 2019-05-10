@@ -26,15 +26,10 @@ module.exports = function (app) {
         Users.update({id: req.user.id, "piDevice.$.deviceId": req.body.deviceId},
             {$set: {"piDevice.$.schedule": req.body.schedule,
             "piDevice.$.plantName": req.body.plantName
-            }})
+            }}, {upsert: true})
             .catch(err => {
                 if(err) console.log(err)
             }).then (data => res.send(data))
     });
 
-//     db.collection.updateMany(
-//         { <query conditions> },
-//     { <update operator>: { "<array>.$[<identifier>]" : value } },
-//     { arrayFilters: [ { <identifier>: <condition> } } ] }
-// )
 };
