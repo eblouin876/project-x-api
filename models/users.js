@@ -13,7 +13,7 @@ const userSchema = new Schema({
             serialNumber: String,
             status: Number,
             active: Boolean,
-            data: {pump: Number, temperature: Number, humidity: Number}
+            data: {pumpStatus: String, temperature: String, humidity: String, moisture: String, lightPin: String}
         }],
         status: Number,
         deviceId: Number
